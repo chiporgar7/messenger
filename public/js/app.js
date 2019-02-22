@@ -11729,7 +11729,13 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_bootstrap_vue___default.a);
 Vue.component('example-component', __webpack_require__(223));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app',
+    methods: {
+        logout: function logout() {
+
+            document.getElementById('logout-form').submit();
+        }
+    }
 });
 
 /***/ }),

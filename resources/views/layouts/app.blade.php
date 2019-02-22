@@ -14,6 +14,12 @@
     
 </head>
 <body>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+        {{ csrf_field() }}
+    </form>
+
+
     <div id="app">
 
         <div>
@@ -39,10 +45,13 @@
 
                         @else
 
-                            <b-nav-item-dropdown text="Username" right>
-                                <b-dropdown-item href="#">Cerrar Sesión</b-dropdown-item>
+                            <b-nav-item-dropdown text="{{ auth()->user()->name }}" right>
 
+                                <b-dropdown-item href="#"  v-on:click="logout">
 
+                                    Cerrar Sesión
+
+                                </b-dropdown-item>
 
                             </b-nav-item-dropdown>
 

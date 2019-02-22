@@ -8,13 +8,30 @@
   
         <b-col cols="8">
 
-            <b-card title="Inicio de sesión">
+            <b-card title="Inicio de sesión" class="my-3">
+                
+                @if($errors->any())
 
-                <b-alert show> 
-                     Por favor ingresa tus datos 
-                </b-alert>
+                    <b-alert show variant="danger">
+                        <ul class="mb-0">
 
-                <b-card-text>Header and footers using props.</b-card-text>
+                            @foreach($errors->all() as $error)
+
+                                <li> {{ $error }}</li>
+
+                            @endforeach 
+                            
+                        </ul>
+                    </b-alert>
+                @else
+
+                    <b-alert show>
+                         Por favor Ingresa tus datos
+                    </b-alert>
+
+                @endif
+
+
 
                 <b-form  method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
@@ -22,8 +39,7 @@
 
                     <b-form-group id="exampleInputGroup1"
                         label="Correo Electrónico"
-                        label-for="email"
-                        description="Nunca compartiremos tu correo, está seguro con nosotros.">
+                        label-for="email">
 
                         <b-form-input type="email"
                             id="email"
@@ -56,7 +72,7 @@
                         </b-form-checkbox>
                         
                     </b-form-group>
-                    
+
             
                     <b-button type="submit" variant="primary">
                         Ingresar
