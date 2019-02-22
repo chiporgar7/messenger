@@ -1,74 +1,85 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
 
-                <div class="panel-body">
+<b-container>
 
-                    <b-alert show>
-                        Por favor ingresa tu datos
-                    </b-alert>
+    <b-row align-h="center">
+  
+        <b-col cols="8">
 
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+            <b-card title="Inicio de sesión">
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                <b-alert show> 
+                     Por favor ingresa tus datos 
+                </b-alert>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                <b-card-text>Header and footers using props.</b-card-text>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                <b-form  method="POST" action="{{ route('login') }}">
+                    {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                    <b-form-group id="exampleInputGroup1"
+                        label="Correo Electrónico"
+                        label-for="email"
+                        description="Nunca compartiremos tu correo, está seguro con nosotros.">
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                        <b-form-input type="email"
+                            id="email"
+                            name="email" 
+                            value="{{ old('email') }}" required autofocus
+                            required
+                            placeholder="example@ejemplo.com" />
+                        </b-form-input>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                    </b-form-group>
 
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
+                    <b-form-group id="exampleInputGroup1"
+                        label="Contraseña"
+                        label-for="password"
+                        description="Asegurate de que no haya moros en la costa">
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        <b-form-input type="password"
+                            id="password"
+                            name="password" 
+                            required/>
+                        </b-form-input>
+                     </b-form-group>
+
+
+                    <b-form-group>
+
+                        <b-form-checkbox  name="remember" checked="true"
+                          {{ old('remember') ? 'checked="true"' : '' }}>
+                            Recordar sesión
+                        </b-form-checkbox>
+                        
+                    </b-form-group>
+                    
+            
+                    <b-button type="submit" variant="primary">
+                        Ingresar
+                    </b-button>
+
+                    <b-button href="{{ route('password.request') }}" variant="link" >
+                        ¿Olvidaste tu contraseña?
+                    </b-button>
+
+                
+                </b-form>
+              
+            </b-card>
+
+
+
+
+               
+
+       
+        </b-col>
+
+    </b-row>
+</b-container>
+
 @endsection

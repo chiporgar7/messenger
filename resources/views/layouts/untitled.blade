@@ -1,0 +1,18 @@
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @guest
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                        <li><a href="{{ route('register') }}">Register</a></li>
+                    @else
+                        <b-nav-item-dropdown text="Username" right>
+                            <b-dropdown-item href="#"> Cerrar Sesión </b-dropdow-item>
+
+                        </b-nav-item-dropdown>
+                    @endguest
+
+                </ul>
+             </div>
+               
